@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Criar Imagem Docker
-        run: docker build -t node-server:1.0
+        run: docker build -t node-server:1.0 ./
 
       - name: Iniciar Container para DAST Scan
         run: docker run -p 127.0.0.1:3000:3000 -d node-server:1.0
