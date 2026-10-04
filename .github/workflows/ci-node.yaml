@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+            #fetch-depth: 0 baixa o histórico completo do Git (Por padrão, o GitHub Actions baixa apenas o último commit do repositório). Assim, o Sonarqube consegue consultar todo o histórico do projeto e gerar métricas mais precisas.
+            # Ele não é um parametro do SonarQube.
+          fetch-depth: 0
 
       - name: Instalar Node.js
         uses: actions/setup-node@v7
@@ -21,11 +25,21 @@ jobs:
         run: "npm install"
 
   sast:
+    name: execução do Sonarqube
     needs: pratica
     runs-on: ubuntu-latest
 
     steps:
       - name: Sonarqube Scan
+        uses: SonarSource/sonarqube-scan-action@v4.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+        # conjunto de regras que diz se o código pode ou não ir para produção
+      - name: Sonarqube Quality Gate check
+        uses: SonarSource/sonarqube-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
       - name: Build
