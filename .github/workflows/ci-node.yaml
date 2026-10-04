@@ -20,6 +20,14 @@ jobs:
       - name: Instalar dependências
         run: "npm install"
 
+  sast:
+    needs: pratica
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sonarqube Scan
+
+
       - name: Build
         run: "npm run build"
 
