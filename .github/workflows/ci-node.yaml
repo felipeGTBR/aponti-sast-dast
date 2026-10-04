@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Sonarqube Scan
-        uses: SonarSource/sonarqube-scan-action@v4.1.0
+        uses: SonarSource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
