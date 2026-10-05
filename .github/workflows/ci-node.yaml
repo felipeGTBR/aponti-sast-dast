@@ -3,6 +3,7 @@ name: CI Node
 on:
   push:
     branches: [main, develop]
+  workflow_dispatch:
 
 jobs:
   pratica:
@@ -50,7 +51,7 @@ jobs:
 
   dast-zap-scan:
     runs-on: ubuntu-latest
-    needs: pratica
+    needs: [pratica, sast]
 
     steps:
       - name: Checkout
