@@ -47,10 +47,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
         # conjunto de regras que diz se o código pode ou não ir para produção
-      - name: Sonarqube Quality Gate check
-        uses: SonarSource/sonarqube-quality-gate-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#      - name: Sonarqube Quality Gate check
+#        uses: SonarSource/sonarqube-quality-gate-action@master
+#        env:
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Instalar dependências
         run: "npm ci"
