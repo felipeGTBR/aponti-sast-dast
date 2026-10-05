@@ -52,6 +52,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Instalar dependências
+        run: "npm ci"
 
       - name: Build
         run: "npm run build"
